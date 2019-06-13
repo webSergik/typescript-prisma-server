@@ -2,15 +2,15 @@
   "name": "typescript-prisma-server",
   "version": "1.0.0",
   "description": "",
+  "author": "webSergik",
+  "license": "ISC",
   "main": "dist/index.js",
   "scripts": {
     "watch": "concurrently -k npm:watch-*",
     "watch-ts": "tsc --watch",
-    "watch-node": "nodemon dist/index.js",
+    "watch-node": "nodemon -e \"js json graphql\" dist/index.js src/schema.graphql",
     "generate": "prisma deploy"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/graphql": "^14.2.0",
     "concurrently": "^4.1.0",

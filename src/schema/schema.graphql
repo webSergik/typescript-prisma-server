@@ -1,5 +1,4 @@
-# import Query from '../../src/generated/prisma.graphql'
-# import Mutation from '../../src/generated/prisma.graphql'
+# import Query.*, Mutation.*, * from '../../src/generated/prisma.graphql'
 
 type Query {
   login(username: String!, password: String!): LoginResponse!
