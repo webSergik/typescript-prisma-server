@@ -1,0 +1,11 @@
+# import Query from '../../src/generated/prisma.graphql'
+# import Mutation from '../../src/generated/prisma.graphql'
+
+type Query {
+  login(username: String!, password: String!): LoginResponse!
+}
+
+type LoginResponse {
+  token: String
+  user: User
+}
