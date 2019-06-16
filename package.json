@@ -6,8 +6,11 @@
   "license": "ISC",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack --config webpack.$NODE_ENV.js",
-    "start": "nodemon src/index.js",
+    "docker-up": "docker-compose -f ./prisma/docker-compose.yml up -d",
+    "watch": "concurrently -k npm:watch-*",
+    "watch-node": "nodemon src/index.js",
+    "watch-ts": "webpack --config webpack.development.js",
+    "build": "webpack --config webpack.production.js",
     "generate": "prisma deploy"
   },
   "devDependencies": {
@@ -16,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "^1.10.2",
     "@typescript-eslint/parser": "^1.10.2",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^4.1.0",
     "eslint": "^5.16.0",
     "graphql-import": "^0.7.1",
     "graphql-import-loader": "^0.2.1",
