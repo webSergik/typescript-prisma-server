@@ -2,14 +2,26 @@
 
 ### Usage
 
-Start docker
+start docker
 
 ```
 npm run docker-up
 ```
 
-watch ts && .graphql
+start watch
 
 ```
 npm run watch
+```
+
+prisma deploy
+
+```
+npm run deploy
+```
+
+generate types
+
+```
+npm run gcg
 ```

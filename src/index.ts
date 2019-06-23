@@ -2,8 +2,7 @@ import { ApolloServer } from "apollo-server";
 import { prisma } from "./generated/prisma-client";
 import { makeExecutableSchema } from "graphql-tools";
 import typeDefs from "./schema/schema.graphql";
-
-const resolvers = {};
+import { resolvers } from "./resolvers/index";
 
 const schema = makeExecutableSchema({
   typeDefs,

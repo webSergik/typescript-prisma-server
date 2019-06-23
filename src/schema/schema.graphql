@@ -1,10 +1,16 @@
 # import Query.*, Mutation.*, * from 'src/generated/prisma.graphql'
 
 type Query {
-  login(username: String!, password: String!): LoginResponse!
+  me: User
+}
+
+type Mutation {
+  # Authentication
+  login(email: String!, password: String!): LoginResponse!
+  signup(email: String!, password: String!): LoginResponse!
 }
 
 type LoginResponse {
-  token: String
-  user: User
+  token: String!
+  user: User!
 }
