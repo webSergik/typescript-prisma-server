@@ -3,6 +3,7 @@ import {
   GraphQLScalarType,
   GraphQLScalarTypeConfig
 } from "graphql";
+import { Context } from "../context";
 export type Maybe<T> = T | null;
 export type MaybePromise<T> = Promise<T> | T;
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
@@ -394,14 +395,14 @@ export type ResolversTypes = {
 };
 
 export type AggregateUserResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["AggregateUser"]
 > = {
   count?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
 };
 
 export type BatchPayloadResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["BatchPayload"]
 > = {
   count?: Resolver<ResolversTypes["Long"], ParentType, ContextType>;
@@ -413,7 +414,7 @@ export interface DateTimeScalarConfig
 }
 
 export type LoginResponseResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["LoginResponse"]
 > = {
   token?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
@@ -426,7 +427,7 @@ export interface LongScalarConfig
 }
 
 export type MutationResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["Mutation"]
 > = {
   login?: Resolver<
@@ -480,7 +481,7 @@ export type MutationResolvers<
 };
 
 export type NodeResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["Node"]
 > = {
   __resolveType: TypeResolveFn<null, ParentType, ContextType>;
@@ -488,7 +489,7 @@ export type NodeResolvers<
 };
 
 export type PageInfoResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["PageInfo"]
 > = {
   hasNextPage?: Resolver<ResolversTypes["Boolean"], ParentType, ContextType>;
@@ -510,7 +511,7 @@ export type PageInfoResolvers<
 };
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["Query"]
 > = {
   me?: Resolver<Maybe<ResolversTypes["User"]>, ParentType, ContextType>;
@@ -541,7 +542,7 @@ export type QueryResolvers<
 };
 
 export type SubscriptionResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["Subscription"]
 > = {
   user?: SubscriptionResolver<
@@ -553,7 +554,7 @@ export type SubscriptionResolvers<
 };
 
 export type UserResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["User"]
 > = {
   id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
@@ -564,7 +565,7 @@ export type UserResolvers<
 };
 
 export type UserConnectionResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["UserConnection"]
 > = {
   pageInfo?: Resolver<ResolversTypes["PageInfo"], ParentType, ContextType>;
@@ -581,7 +582,7 @@ export type UserConnectionResolvers<
 };
 
 export type UserEdgeResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["UserEdge"]
 > = {
   node?: Resolver<ResolversTypes["User"], ParentType, ContextType>;
@@ -589,7 +590,7 @@ export type UserEdgeResolvers<
 };
 
 export type UserPreviousValuesResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["UserPreviousValues"]
 > = {
   id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
@@ -600,7 +601,7 @@ export type UserPreviousValuesResolvers<
 };
 
 export type UserSubscriptionPayloadResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType = ResolversTypes["UserSubscriptionPayload"]
 > = {
   mutation?: Resolver<ResolversTypes["MutationType"], ParentType, ContextType>;
@@ -617,7 +618,7 @@ export type UserSubscriptionPayloadResolvers<
   >;
 };
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = Context> = {
   AggregateUser?: AggregateUserResolvers<ContextType>;
   BatchPayload?: BatchPayloadResolvers<ContextType>;
   DateTime?: GraphQLScalarType;
@@ -639,4 +640,4 @@ export type Resolvers<ContextType = any> = {
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>;
+export type IResolvers<ContextType = Context> = Resolvers<ContextType>;
