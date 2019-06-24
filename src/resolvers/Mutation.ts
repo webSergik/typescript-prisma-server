@@ -18,8 +18,26 @@ const Mutation: MutationResolvers = {
       user
     };
   },
-  login: (_, { email, password }, context) => {
-    return null;
+  login: async (_, { email, password }, { prisma }) => {
+    const user = await prisma.user({ email });
+
+    if (!user) {
+      throw new Error("Invalid login");
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      throw new Error("Invalid login");
+    }
+
+    const token = jwt.sign({ userId: user.id }, APP_SECRET, {
+      expiresIn: "30d" // token will expire in 30days
+    });
+
+    return {
+      token,
+      user
+    };
   }
 };
 
