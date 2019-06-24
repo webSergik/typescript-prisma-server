@@ -2,8 +2,7 @@ import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
 
 import { MutationResolvers } from "../generated/graphql";
-
-const APP_SECRET = "super_secret";
+import { APP_SECRET } from "../utils";
 
 const Mutation: MutationResolvers = {
   signup: async (_, { email, password }, { prisma }) => {
@@ -26,8 +25,9 @@ const Mutation: MutationResolvers = {
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
+
     if (!passwordMatch) {
-      throw new Error("Invalid login");
+      throw new Error("Invalid password");
     }
 
     const token = jwt.sign({ userId: user.id }, APP_SECRET, {

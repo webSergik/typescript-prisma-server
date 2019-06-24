@@ -3,6 +3,7 @@ import { prisma } from "./generated/prisma-client";
 import { makeExecutableSchema } from "graphql-tools";
 import typeDefs from "./schema/schema.graphql";
 import { resolvers } from "./resolvers/index";
+import { getUser } from "./utils";
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -12,7 +13,12 @@ const schema = makeExecutableSchema({
 
 const server = new ApolloServer({
   schema,
-  context: { prisma }
+  context: ({ req }) => {
+    const tokenWithBearer = req.headers.authorization || "";
+    const token = tokenWithBearer.split(" ")[1];
+    const user = getUser(token);
+    return { prisma, user };
+  }
 });
 
 server
